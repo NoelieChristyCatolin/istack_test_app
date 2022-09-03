@@ -4,7 +4,9 @@ import 'package:test_app/core/database/database.dart';
 import 'package:test_app/features/review/review.dart';
 
 class ReviewProvider extends ChangeNotifier{
-  ReviewProvider();
+  ReviewProvider(){
+    getReviews();
+  }
 
   List<Review> reviews = [];
 
@@ -14,14 +16,17 @@ class ReviewProvider extends ChangeNotifier{
 
   saveFeedback(){
    saveLocally();
-
+   db.addReview(review);
   }
 
   saveLocally()async{
     var box = await Hive.openBox('appBox');
+    //todo: make this a list
     box.put('review', review);
-    Review stored = box.get('review');
-    db.addReview(review);
+    // Review stored = box.get('review');
+  }
+
+  getReviews()async{
     reviews = await db.getReviews();
     reviews.forEach((element) {print('${element.appRating} - ${element.feedback}');});
   }

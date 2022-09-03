@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/features/event_map/map_screen.dart';
 import 'package:test_app/features/review/review_modal.dart';
+import 'package:test_app/features/review/review_screen.dart';
 
 class Home extends StatefulWidget {
   Home();
@@ -9,15 +11,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
+  int selectedIndex = 0;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
   }
 
-  getReview()async{
-    await showDialog(context: context,barrierDismissible: false, builder: (dialogContext)=> ReviewModal());
+  static const List<Widget> _widgetOptions = <Widget>[
+    MapScreen(),
+    ReviewScreen()
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
   }
 
   @override
@@ -26,11 +35,14 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Test App'),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.rate_review_outlined),
-        onPressed: (){
-          return getReview();
-        },
+      body: Center(
+        child: _widgetOptions.elementAt(selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [BottomNavigationBarItem(icon: Icon(Icons.map_outlined), label: 'Map'), BottomNavigationBarItem(icon: Icon(Icons.rate_review_outlined),label: 'Reviews')],
+        currentIndex: selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }
