@@ -11,6 +11,8 @@ class ReviewModal extends StatefulWidget {
 }
 
 class _ReviewState extends State<ReviewModal> {
+  TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ReviewProvider>(
@@ -66,6 +68,7 @@ class _ReviewState extends State<ReviewModal> {
                     Container(
                         height: 200,
                         child: TextFormField(
+                          controller: controller,
                           decoration: new InputDecoration(
                             hintText: 'Enter ypour feedback here...',
                             border: new OutlineInputBorder(
@@ -79,16 +82,19 @@ class _ReviewState extends State<ReviewModal> {
                             ),
                           ),
                           onChanged: (value){
-                          provider.review.feedback = value;
+                          setState(() {
+                            provider.review.feedback = value;
+                          });
                         },)),
                     ElevatedButton(
-                        onPressed: (){
-                       setState(() {
-                         provider.saveFeedback();
-                         Navigator.pop(context);
-                       });
+                        onPressed: controller.text == '' ? (){} : (){
+                          setState(() {
+                            provider.saveFeedback();
+                            Navigator.pop(context);
+                          });
                         },
-                        child: Text('Submit'))
+                        child: Text('Submit'),
+                    style: ElevatedButton.styleFrom(backgroundColor: controller.text == '' ? Colors.blueGrey : Colors.blue))
                   ],
                 ),
               ),

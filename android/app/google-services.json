@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "470699580989",
+    "firebase_url": "https://test-app-istack-default-rtdb.firebaseio.com",
+    "project_id": "test-app-istack",
+    "storage_bucket": "test-app-istack.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470699580989:android:f0580bd02525a47a14d454",
+        "android_client_info": {
+          "package_name": "com.example.test_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470699580989-vpjfc1bmi284rnreab2amqugpdoa5uaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwGmbQZISu22IrR7-HD58ar3ownfVXO1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470699580989-vpjfc1bmi284rnreab2amqugpdoa5uaj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "470699580989-h1vddjcbcpgbvio1bf5slk8se31qgvkk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.testApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
