@@ -11,6 +11,14 @@ class ReviewScreen extends StatefulWidget {
 }
 
 class _ReviewScreenState extends State<ReviewScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<ReviewProvider>(context, listen: false).getReviews();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<ReviewProvider>(builder:(context, provider, child) => Scaffold(

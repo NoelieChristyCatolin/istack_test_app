@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:test_app/features/event_map/map_provider.dart';
 import 'package:test_app/features/home.dart';
 import 'package:test_app/features/review/review.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=> ReviewProvider())
+        ChangeNotifierProvider(create: (context)=> ReviewProvider()),
+        // ChangeNotifierProvider(create: (context)=> MapProvider()),
       ],
       child: MaterialApp(
         title: 'Test App',
