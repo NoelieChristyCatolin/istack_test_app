@@ -22,13 +22,14 @@ class ReviewProvider extends ChangeNotifier{
 
   saveLocally()async{
     var reviewBox = await Hive.openBox('review_box');
-    var collections = reviewBox.values;
-    reviewBox.put(collections.length, review);
+    // var collections = reviewBox.values;
+    // reviewBox.put(collections.length, review);
+    reviewBox.add(review);
+    print('reviewBox.values.length: ${reviewBox.values.length}');
   }
 
   getReviews()async{
     try{
-      var reviewBox = await Hive.openBox('review_box');
       reviews = await db.getReviews();
     }
     catch(err){

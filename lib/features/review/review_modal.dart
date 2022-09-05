@@ -26,8 +26,11 @@ class _ReviewState extends State<ReviewModal> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('App Rating'),
-                  Text('How would you rate your experience with us?'),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('App Rating', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                  ),
+                  Text('How would you rate your experience with us?', style: TextStyle(color: Colors.blueGrey),),
                   RatingBar.builder(
                     initialRating: 3,
                     minRating: 1,
@@ -64,11 +67,13 @@ class _ReviewState extends State<ReviewModal> {
                   Text('Let us know what you think'),
                   SizedBox(height: 20,),
                   Container(
-                      height: 200,
+                      // height: 200,
                       child: TextFormField(
                         controller: controller,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
                         decoration: new InputDecoration(
-                          hintText: 'Enter ypour feedback here...',
+                          hintText: 'Enter your feedback here...',
                           border: new OutlineInputBorder(
                             borderRadius: const BorderRadius.all(
                               const Radius.circular(8.0),
