@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:test_app/features/event_map/location.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:test_app/core/database/database.dart';
@@ -28,8 +29,27 @@ class MapProvider extends ChangeNotifier{
   }
 
   getLocations() async{
-    locations =  await db.getLocations();
-    locations.forEach((element) {print('${element.name}');});
+    try{
+      locations =  await db.getLocations();
+      saveLocally();
+    }
+    catch(err){
+      var locationBox = await Hive.openBox('location_box');
+      locationBox.keys.forEach((element)async {
+        var data = await locationBox.get(0);
+        locations.add(data);
+      });
+
+    }
+
     notifyListeners();
+  }
+
+  saveLocally()async{
+    var locationBox = await Hive.openBox('location_box');
+    locations.forEach((element) {
+      locationBox.add(element);
+    });
+    print('locationBox.values.length: ${locationBox.values.length}');
   }
 }

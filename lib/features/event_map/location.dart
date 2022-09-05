@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 part 'location.g.dart';
 
-@HiveType(typeId: 1)
+@HiveType(typeId: 2)
 class Location{
   Location({this.id = 0,
     this.name = '',

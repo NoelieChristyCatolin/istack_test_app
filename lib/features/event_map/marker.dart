@@ -81,7 +81,8 @@ class Marker extends StatelessWidget {
         child: Container(
           height: mediaHeight * location.height,
           width: mediaWidth * location.width,
-          color: Colors.black.withOpacity(0.2),
+          // color: Colors.black.withOpacity(0.2),
+          color: Colors.transparent,
         ),
       ),
     );

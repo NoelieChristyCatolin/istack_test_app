@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:test_app/features/event_map/location.dart';
 import 'package:test_app/features/event_map/map_provider.dart';
 import 'package:test_app/features/home.dart';
 import 'package:test_app/features/review/review.dart';
@@ -13,6 +14,7 @@ void main() async{
   await Firebase.initializeApp();
   await Hive.initFlutter();
   Hive.registerAdapter(ReviewAdapter());
+  Hive.registerAdapter(LocationAdapter());
   runApp(MyApp());
 }
 
