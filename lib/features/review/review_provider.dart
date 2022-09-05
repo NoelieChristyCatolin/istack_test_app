@@ -17,6 +17,7 @@ class ReviewProvider extends ChangeNotifier{
    saveLocally();
    db.addReview(review);
    getReviews();
+   screenId=0;
   }
 
   saveLocally()async{
@@ -27,6 +28,7 @@ class ReviewProvider extends ChangeNotifier{
 
   getReviews()async{
     try{
+      var reviewBox = await Hive.openBox('review_box');
       reviews = await db.getReviews();
     }
     catch(err){

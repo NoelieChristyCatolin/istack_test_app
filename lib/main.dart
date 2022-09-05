@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context)=> ReviewProvider()),
-        // ChangeNotifierProvider(create: (context)=> MapProvider()),
+        ChangeNotifierProvider(create: (context)=> MapProvider()),
       ],
       child: MaterialApp(
         title: 'Test App',

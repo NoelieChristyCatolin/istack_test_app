@@ -86,10 +86,8 @@ class _ReviewState extends State<ReviewModal> {
                       },)),
                   ElevatedButton(
                       onPressed: controller.text == '' ? (){} : (){
-                        setState(() {
-                          provider.saveFeedback();
-                          Navigator.pop(context);
-                        });
+                        Navigator.pop(context);
+                        provider.saveFeedback();
                       },
                       child: Text('Submit'),
                   style: ElevatedButton.styleFrom(backgroundColor: controller.text == '' ? Colors.blueGrey : Colors.blue))

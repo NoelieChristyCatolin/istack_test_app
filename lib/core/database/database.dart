@@ -23,15 +23,20 @@ class Database{
     return reviews;
   }
 
+  void addLocations(Location location) {
+    _firestore.collection(locationCollection).add(location.toMap());
+  }
+
   getLocations()async{
-    List<Location> locations = [];
-    await _firestore.collection(locationCollection).get().then((event) {
-      for (var doc in event.docs) {
-        locations.add(Location.fromMap(doc.data()));
-      }
-    });
-    print('locations: ${locations.length}');
-    return locations;
+      List<Location> locations = [];
+      await _firestore.collection(locationCollection).get().then((event) {
+        for (var doc in event.docs) {
+          locations.add(Location.fromMap(doc.data()));
+        }
+      });
+      print('locations: ${locations.length}');
+      return locations;
+
   }
 
 }
