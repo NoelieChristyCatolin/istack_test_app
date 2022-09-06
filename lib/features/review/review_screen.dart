@@ -24,7 +24,14 @@ class _ReviewScreenState extends State<ReviewScreen> {
   Widget build(BuildContext context) {
     return Consumer<ReviewProvider>(builder:(context, provider, child) => Scaffold(
       body:  ListView.separated(itemCount: provider.reviews.length, itemBuilder: (context, index)=>
-          ListTile(title:Text(provider.reviews[index].feedback),
+          ListTile(title:Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(child: Text(provider.reviews[index].feedback)),
+              Text(provider.formatDate(provider.reviews[index].date), style: TextStyle(color: Colors.blueGrey, fontSize: 12),),
+            ],
+          ),
             subtitle: Row(
               children: [
                 Text(provider.reviews[index].appRating.toString()),

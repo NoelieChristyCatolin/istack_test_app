@@ -6,17 +6,29 @@ class Review{
   Review();
 
   @HiveField(0)
-  double appRating = 3;
+  int id = 0;
 
   @HiveField(1)
+  double appRating = 3;
+
+  @HiveField(2)
   String feedback = '';
+
+  @HiveField(3)
+  String date = '';
 
   toMap(){
     return <String, dynamic>{
+      "id": this.id,
       "feedback": this.feedback,
       "appRating": this.appRating,
+      "date": this.date,
     };
   }
 
-  Review.fromMap(Map<String, dynamic> map): feedback = map['feedback'],appRating = map['appRating'];
+  Review.fromMap(Map<String, dynamic> map):
+        id = map['id'],
+        feedback = map['feedback'],
+        appRating = map['appRating'],
+        date = map['date'];
 }

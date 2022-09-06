@@ -4,12 +4,6 @@ import 'package:test_app/features/event_map/location.dart';
 import 'package:test_app/features/event_map/map_provider.dart';
 
 class Marker extends StatelessWidget {
-  // Marker({this.x = 0, this.y = 0, this.width = 0, this.height =0});
-  // int id;
-  // double x;
-  // double y;
-  // double width;
-  // double height;
   Marker({required this.location});
   final Location location;
 
@@ -19,7 +13,6 @@ class Marker extends StatelessWidget {
     var mediaWidth = MediaQuery.of(context).size.width;
     var mediaHeight = MediaQuery.of(context).size.height;
     return Consumer<MapProvider>(builder:(context, provider, child){
-      // var location = provider.locations[id];
       return Positioned(
       left: mediaWidth * location.x,
       top:  mediaHeight * location.y,
