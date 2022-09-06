@@ -14,7 +14,6 @@ class ReviewProvider extends ChangeNotifier{
   int screenId = 0;
 
   saveFeedback(){
-   saveLocally();
    db.addReview(review);
    getReviews();
    screenId=0;
@@ -22,24 +21,12 @@ class ReviewProvider extends ChangeNotifier{
 
   saveLocally()async{
     var reviewBox = await Hive.openBox('review_box');
-    // var collections = reviewBox.values;
-    // reviewBox.put(collections.length, review);
     reviewBox.add(review);
     print('reviewBox.values.length: ${reviewBox.values.length}');
   }
 
   getReviews()async{
-    try{
-      reviews = await db.getReviews();
-    }
-    catch(err){
-      reviews.clear();
-      var reviewBox = await Hive.openBox('review_box');
-      reviewBox.keys.forEach((element)async {
-        var data = await reviewBox.get(0);
-        reviews.add(data);
-      });
-    }
+    reviews = await db.getReviews();
     notifyListeners();
   }
 

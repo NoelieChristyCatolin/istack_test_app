@@ -23,10 +23,8 @@ class _ReviewScreenState extends State<ReviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ReviewProvider>(builder:(context, provider, child) => Scaffold(
-      // appBar: AppBar(title: Text('Reviews'),),
       body:  ListView.separated(itemCount: provider.reviews.length, itemBuilder: (context, index)=>
           ListTile(title:Text(provider.reviews[index].feedback),
-            // subtitle: Text(provider.reviews[index].appRating.toString()),
             subtitle: Row(
               children: [
                 Text(provider.reviews[index].appRating.toString()),
