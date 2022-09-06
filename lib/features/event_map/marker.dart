@@ -35,7 +35,7 @@ class Marker extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         children: [
-                          FadeInImage(image: NetworkImage(location.image), placeholder: AssetImage('assets/placeholder.png'),height: 100, width: 100,),
+                          FadeInImage(image: NetworkImage(location.image), imageErrorBuilder: (context, object, stackStrace)=>Image(image: AssetImage('assets/placeholder.png'),height: 100, width: 100,), placeholder: AssetImage('assets/placeholder.png'),height: 100, width: 100,),
                           Expanded(child: Text(location.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),)),
                         ],
                       ),
