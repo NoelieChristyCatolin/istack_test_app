@@ -12,7 +12,6 @@ class MapProvider extends ChangeNotifier{
     // addLocations(Location(id:2, x: .6, y: .43,height: .07,width: .15,name: 'Pond', details: 'Meet our friendly duck here!', opening:'5:A00 AM', closing: "5:00 PM", fee: 0, image: "https://cdn-icons-png.flaticon.com/512/4251/4251873.png"));
     // addLocations(Location(id:3, x: .45, y: .09,height: .12,width: .3,name: 'Castle', details: 'Complete your disney princess dream!', opening:'7:A00 AM', closing: "6:00 PM", fee: 250, image: "https://www.pngitem.com/pimgs/m/109-1096095_castle-castle-icon-png-transparent-png.png"));
     // addLocations(Location(id:4,x: .83, y: .02,height: .06,width: .11, name: 'Helipad', details: 'For VIP clients only', opening:'9:A00 AM', closing: "3:00 PM", fee: 5000, image: "http://cdn.onlinewebfonts.com/svg/img_493600.png"));
-    //
     // addLocations(Location(id:5,x: .88, y: .33,height: .12,width: .1, name: 'Forest', details: 'Take a walk with nature', opening:'5:A00 AM', closing: "5:00 PM", fee: 50,  image: "https://www.clipartmax.com/png/middle/98-982849_forest-comments-forest-icon-white.png"));
     // addLocations(Location(id:6, x: .08, y: .58,height: .15,width: .3,name: 'Zoo', details: 'See the rarest animals!', opening:'6:A00 AM', closing: "8:00 PM", fee: 0,  image: "https://cdn-icons-png.flaticon.com/512/2093/2093607.png"));
     // addLocations(Location(id:7, x: .5, y: .61,height: .08,width: .2,name: 'Garden', details: 'Go and feel the thrill of the worlds best park!', opening:'7:A00 AM', closing: "6:00 PM", fee: 0,  image: "https://www.kindpng.com/picc/m/12-120260_png-file-svg-garden-icon-png-transparent-png.png"));
@@ -25,23 +24,11 @@ class MapProvider extends ChangeNotifier{
 
   addLocations(Location location)async{
     db.addLocations(location);
-    locations.forEach((element) {print('${element.name}');});
   }
 
   getLocations() async{
-    try{
-      locations =  await db.getLocations();
-      saveLocally();
-    }
-    catch(err){
-      var locationBox = await Hive.openBox('location_box');
-      locationBox.keys.forEach((element)async {
-        var data = await locationBox.get(0);
-        locations.add(data);
-      });
-
-    }
-
+    locations =  await db.getLocations();
+    locations.forEach((element) {print('${element.name}');});
     notifyListeners();
   }
 
